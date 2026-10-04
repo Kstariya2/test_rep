@@ -1,0 +1,13 @@
+name = "airvox-official-web"
+main = "worker.js"
+compatibility_date = "2026-10-03"
+
+[assets]
+directory = "."
+binding = "ASSETS"
+run_worker_first = ["/api/*"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "airvox-db"
+database_id = "6c840636-fa92-4825-beea-81cb22b50e61"
