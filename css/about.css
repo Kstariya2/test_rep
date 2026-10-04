@@ -502,3 +502,303 @@
     animation: none;
   }
 }
+
+/* ═══════════════════════════════════════════
+   STORY — GLOBAL LOGISTICS VISUAL
+═══════════════════════════════════════════ */
+
+.story-visual {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.story-globe {
+  position: absolute;
+  width: min(62vw, 900px);
+  height: min(50vw, 700px);
+
+  right: -8%;
+  top: 8%;
+
+  opacity: 0;
+  transform: translate3d(70px, 20px, 0) scale(0.94);
+
+  transition:
+    opacity 1.4s ease,
+    transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.story-section.in-view .story-globe {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.story-globe svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+
+/* Globe structure */
+
+.globe-line {
+  fill: none;
+  stroke: rgba(255, 107, 0, 0.10);
+  stroke-width: 1.2;
+}
+
+.globe-line-soft {
+  stroke: rgba(255, 255, 255, 0.045);
+  stroke-width: 1;
+}
+
+
+/* Routes */
+
+.route-line {
+  fill: none;
+  stroke: rgba(255, 107, 0, 0.34);
+  stroke-width: 1.5;
+
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+
+  opacity: 0.8;
+}
+
+.route-line-2 {
+  stroke: rgba(255, 107, 0, 0.18);
+}
+
+.route-line-3 {
+  stroke: rgba(255, 107, 0, 0.24);
+}
+
+.story-section.in-view .route-line {
+  animation:
+    routeDraw 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.story-section.in-view .route-line-2 {
+  animation-delay: 0.35s;
+}
+
+.story-section.in-view .route-line-3 {
+  animation-delay: 0.7s;
+}
+
+@keyframes routeDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+/* Nodes */
+
+.route-node {
+  fill: var(--orange-primary);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.story-section.in-view .route-node {
+  animation: nodeAppear 0.6s ease forwards;
+}
+
+.story-section.in-view .route-node:nth-of-type(1) {
+  animation-delay: 0.9s;
+}
+
+.story-section.in-view .route-node:nth-of-type(2) {
+  animation-delay: 1.05s;
+}
+
+.story-section.in-view .route-node:nth-of-type(3) {
+  animation-delay: 1.2s;
+}
+
+.story-section.in-view .route-node:nth-of-type(4) {
+  animation-delay: 1.35s;
+}
+
+.story-section.in-view .route-node:nth-of-type(5) {
+  animation-delay: 1.5s;
+}
+
+.story-section.in-view .route-node:nth-of-type(6) {
+  animation-delay: 1.65s;
+}
+
+@keyframes nodeAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+
+  to {
+    opacity: 0.95;
+    transform: scale(1);
+  }
+}
+
+
+/* Node glow */
+
+.node-halo {
+  fill: none;
+  stroke: rgba(255, 107, 0, 0.20);
+  stroke-width: 1;
+  opacity: 0;
+}
+
+.story-section.in-view .node-halo {
+  animation: haloPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes haloPulse {
+  0%,
+  100% {
+    opacity: 0.12;
+    transform: scale(0.7);
+    transform-origin: center;
+  }
+
+  50% {
+    opacity: 0.45;
+    transform: scale(1.4);
+    transform-origin: center;
+  }
+}
+
+
+/* Decorative crosses */
+
+.story-cross {
+  position: absolute;
+
+  font-family: var(--font-tech);
+  font-size: 14px;
+  font-weight: 400;
+
+  color: rgba(255, 107, 0, 0.38);
+
+  opacity: 0;
+
+  animation:
+    crossFloat 5s ease-in-out infinite;
+}
+
+.story-section.in-view .story-cross {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.cross-1 {
+  top: 22%;
+  right: 32%;
+}
+
+.cross-2 {
+  top: 65%;
+  right: 12%;
+  animation-delay: 1.4s;
+}
+
+.cross-3 {
+  top: 78%;
+  left: 47%;
+  animation-delay: 2.4s;
+}
+
+@keyframes crossFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+
+/* Very subtle vignette */
+
+.story-section {
+  isolation: isolate;
+}
+
+.story-section .story-inner {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* Mobile */
+
+@media (max-width: 900px) {
+
+  .story-globe {
+    width: 650px;
+    height: 500px;
+
+    right: -280px;
+    top: 32%;
+
+    opacity: 0.45;
+  }
+
+  .story-section.in-view .story-globe {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+
+  .story-globe {
+    width: 520px;
+    height: 420px;
+
+    right: -250px;
+    top: 42%;
+
+    opacity: 0.25;
+  }
+
+  .story-cross {
+    display: none;
+  }
+}
+
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .story-globe {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .route-line {
+    stroke-dashoffset: 0;
+    animation: none !important;
+  }
+
+  .route-node {
+    opacity: 1;
+    animation: none !important;
+  }
+
+  .node-halo,
+  .story-cross {
+    animation: none !important;
+  }
+}
