@@ -1840,3 +1840,51 @@
     transition: none;
   }
 }
+
+
+/* ═══════════════════════════════════════════
+   TEAM PHOTO FRAMING
+═══════════════════════════════════════════ */
+
+.team-photo {
+  aspect-ratio: 4 / 4.5;
+  overflow: hidden;
+  position: relative;
+  background: #08172f;
+}
+
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  object-fit: cover;
+
+  /* Better portrait framing */
+  object-position: center 25%;
+
+  transition:
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    object-position 0.3s ease;
+}
+
+/* Shahrukh: horizontal image */
+.team-card:nth-child(1) .team-photo img {
+  object-position: center 30%;
+}
+
+/* Rehan: vertical portrait */
+.team-card:nth-child(2) .team-photo img {
+  object-position: center 25%;
+}
+
+/* Placeholder */
+.team-card:nth-child(3) .team-photo-placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+/* Subtle hover */
+.team-card:hover .team-photo img {
+  transform: scale(1.035);
+}
