@@ -1889,38 +1889,3 @@
   transform: scale(1.035);
 }
 
-/* ═══════════════════════════════════════════
-   STATS SECTION - MATCH CORE TEAM BACKGROUND
-═══════════════════════════════════════════ */
-
-.stats-section {
-  background: var(--navy-dark) !important;
-  border-top: 1px solid rgba(255, 107, 0, 0.06);
-  border-bottom: 1px solid rgba(255, 107, 0, 0.06);
-}
-
-/* If stats use another wrapper */
-.stats,
-.stats-wrapper,
-.stats-grid {
-  background: transparent !important;
-}
-
-/* Keep the numbers clean */
-.stats-section .stat-number,
-.stats-section h2,
-.stats-section h3 {
-  color: var(--orange-primary);
-}
-
-/* Labels */
-.stats-section .stat-label,
-.stats-section p {
-  color: var(--white-dim);
-}
-
-/* Orange underline */
-.stats-section .stat-line,
-.stats-section .stat-item::after {
-  background: var(--orange-primary);
-}
